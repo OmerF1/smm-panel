@@ -4,6 +4,21 @@
   <meta charset="UTF-8" />
   <title>Sorgu Paneli</title>
   <style>
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #07103a; /* Daha koyu lacivert */
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      z-index: 1000;
+    }
+
     body {
       background-color: #0b1446; /* Has lacivert */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,6 +30,7 @@
       color: #fff;
       flex-direction: column;
       padding: 20px;
+      padding-top: 70px; /* header yüksekliği kadar boşluk */
     }
     .panel {
       background: #1e275f;
@@ -27,7 +43,7 @@
     }
     .panel h2 {
       margin-bottom: 25px;
-      font-size: 2.8rem; /* büyütüldü */
+      font-size: 2.8rem;
       color: #e0e0e0;
     }
     input[type="text"], input[type="email"], input[type="tel"] {
@@ -36,7 +52,7 @@
       margin-bottom: 20px;
       border: none;
       border-radius: 8px;
-      font-size: 1.4rem; /* büyütüldü */
+      font-size: 1.4rem;
     }
     button {
       padding: 14px 30px;
@@ -45,7 +61,7 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 1.6rem; /* büyütüldü */
+      font-size: 1.6rem;
       transition: background-color 0.3s;
       font-weight: 600;
     }
@@ -55,14 +71,14 @@
     #sonuc {
       margin-top: 25px;
       font-weight: 700;
-      font-size: 1.6rem; /* büyütüldü */
+      font-size: 1.6rem;
       min-height: 2.2rem;
       color: #c7d1ff;
     }
     footer {
       margin-top: 40px;
       color: #c7d1ff;
-      font-size: 1.2rem; /* büyütüldü */
+      font-size: 1.2rem;
       display: flex;
       justify-content: center;
       gap: 30px;
@@ -79,6 +95,8 @@
   </style>
 </head>
 <body>
+  <header>OmerF1</header>
+
   <div class="panel">
     <h2>Sorgu Paneli</h2>
 
