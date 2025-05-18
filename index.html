@@ -25,18 +25,29 @@
       padding: 30px;
     }
 
-    .login-box input {
+    .form-box input {
       padding: 10px;
       margin: 10px;
       width: 200px;
     }
 
-    .login-box button {
+    .form-box button {
       padding: 10px 20px;
       background-color: #444;
       color: white;
       border: none;
       cursor: pointer;
+    }
+
+    .toggle-links {
+      margin-top: 20px;
+    }
+
+    .toggle-links a {
+      color: #0af;
+      cursor: pointer;
+      margin: 0 10px;
+      text-decoration: underline;
     }
 
     .grid {
@@ -62,13 +73,25 @@
 
   <header>OmerF1</header>
 
-  <!-- Giriş ekranı -->
+  <!-- Giriş/Kayıt ekranı -->
   <div class="login-container" id="login-container">
-    <div class="login-box">
+    <div class="form-box" id="login-box">
       <h2>Giriş Yap</h2>
-      <input type="text" id="username" placeholder="Kullanıcı Adı" /><br />
-      <input type="password" id="password" placeholder="Şifre" /><br />
+      <input type="text" id="login-username" placeholder="Kullanıcı Adı" /><br />
+      <input type="password" id="login-password" placeholder="Şifre" /><br />
       <button onclick="login()">Giriş Yap</button>
+    </div>
+
+    <div class="form-box" id="register-box" style="display:none;">
+      <h2>Kayıt Ol</h2>
+      <input type="text" id="register-username" placeholder="Kullanıcı Adı" /><br />
+      <input type="password" id="register-password" placeholder="Şifre" /><br />
+      <button onclick="register()">Kayıt Ol</button>
+    </div>
+
+    <div class="toggle-links">
+      <a onclick="showLogin()">Giriş</a> | 
+      <a onclick="showRegister()">Kayıt Ol</a>
     </div>
   </div>
 
@@ -100,25 +123,4 @@
       }
     }
 
-    function login() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-
-      if (user === "admin" && pass === "1234") {
-        localStorage.setItem("girisYapildi", "true");
-        showPage();
-      } else {
-        alert("Kullanıcı adı veya şifre yanlış!");
-      }
-    }
-
-    function logout() {
-      localStorage.removeItem("girisYapildi");
-      showPage();
-    }
-
-    window.onload = showPage;
-  </script>
-
-</body>
-</html>
+    function login()
