@@ -70,6 +70,8 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 15px;
+      width: fit-content;
+      margin: 0 auto;
     }
     .grid-item {
       background: #003366;
@@ -83,15 +85,19 @@
       margin-top: 0;
       color: #00c3ff;
     }
-    .grid-item ul, .grid-item pre, .grid-item p {
+    .grid-item ul, .grid-item pre, .grid-item p, .grid-item ol {
       margin: 0;
       font-size: 0.9em;
+      padding-left: 20px;
     }
     .grid-item input[type="file"],
     .grid-item input[type="text"],
     .grid-item button {
       margin-top: 10px;
       width: 100%;
+    }
+    .exit-btn {
+      background-color: #dc3545 !important;
     }
   </style>
 </head>
@@ -110,11 +116,14 @@
     <div id="userDisplay"></div>
     <div class="grid-container">
       <div class="grid-item">
-        <h3>Kullanıcılar</h3>
-        <ul>
-          <li>Ömer Faruk</li>
-          <li>Elif Yıldız</li>
-        </ul>
+        <h3>Panel İşlemleri</h3>
+        <ol>
+          <li>Ad Soyad</li>
+          <li>Aile</li>
+          <li>Sülale</li>
+          <li>TC &gt; GSM</li>
+          <li>GSM &gt; TC</li>
+        </ol>
       </div>
       <div class="grid-item">
         <h3>Yeni Kayıt</h3>
@@ -150,11 +159,9 @@
       </div>
       <div class="grid-item">
         <h3>Çıkış</h3>
-        <button style="background-color: #dc3545;">Güvenli Çıkış</button>
+        <button class="exit-btn" onclick="logout()">Güvenli Çıkış</button>
       </div>
     </div>
-    <br />
-    <button onclick="logout()">Çıkış Yap</button>
   </div>
 </main>
 
@@ -195,3 +202,4 @@
 
 </body>
 </html>
+
