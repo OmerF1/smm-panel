@@ -1,15 +1,90 @@
-<!DOCTYPE html>
+<!<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OmerF1</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Demo Sorgu Paneli</title>
+  <style>
+    body {
+      background: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .panel {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .panel h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="text"] {
+      padding: 12px;
+      width: 100%;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px 25px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #sonuc {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #222;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>OmerF1</h1>
-    <p>Gizli sistemlere hoş geldin.</p>
+  <div class="panel">
+    <h2>Ad Soyad ile TC Sorgu (DEMO)</h2>
+    <input type="text" id="adsoyad" placeholder="Örn: Ahmet Yıldız">
+    <button onclick="sorgula()">Sorgula</button>
+    <div id="sonuc"></div>
   </div>
+
+  <script>
+    const veritabani = {
+      "ahmet yıldız": "12345678901",
+      "ayşe kaya": "98765432100",
+      "mehmet demir": "11122233344"
+    };
+
+    function sorgula() {
+      const adsoyad = document.getElementById("adsoyad").value.toLowerCase().trim();
+      const sonucDiv = document.getElementById("sonuc");
+
+      if (veritabani[adsoyad]) {
+        sonucDiv.innerText = `TC Kimlik No: ${veritabani[adsoyad]}`;
+      } else {
+        sonucDiv.innerText = "Kayıt bulunamadı.";
+      }
+    }
+  </script>
 </body>
 </html>
