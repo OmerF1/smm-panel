@@ -7,15 +7,33 @@
 <style>
   body {
     font-family: Arial, sans-serif;
-    background: #222;
+    background: #001f4d; /* Lacivert arka plan */
     color: #fff;
     margin: 0; padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: #003366;
+    color: white;
+    padding: 15px 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  }
+  main {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    padding-top: 70px; /* header yüksekliği kadar boşluk */
     flex-direction: column;
   }
+
   #login, #mainContent {
     width: 320px;
   }
@@ -58,7 +76,7 @@
     grid-gap: 15px;
   }
   .grid-item {
-    background: #444;
+    background: #003366;
     border-radius: 8px;
     padding: 30px 0;
     font-size: 1.1em;
@@ -68,28 +86,32 @@
 </head>
 <body>
 
-<div id="login">
-  <h2>Giriş Yap</h2>
-  <input type="text" id="username" placeholder="Kullanıcı Adı" />
-  <button onclick="login()">Giriş</button>
-</div>
+<header>OmerF1</header>
 
-<div id="mainContent">
-  <div id="userDisplay"></div>
-  <div class="grid-container">
-    <div class="grid-item">Kutu 1</div>
-    <div class="grid-item">Kutu 2</div>
-    <div class="grid-item">Kutu 3</div>
-    <div class="grid-item">Kutu 4</div>
-    <div class="grid-item">Kutu 5</div>
-    <div class="grid-item">Kutu 6</div>
-    <div class="grid-item">Kutu 7</div>
-    <div class="grid-item">Kutu 8</div>
-    <div class="grid-item">Kutu 9</div>
+<main>
+  <div id="login">
+    <h2>Giriş Yap</h2>
+    <input type="text" id="username" placeholder="Kullanıcı Adı" />
+    <button onclick="login()">Giriş</button>
   </div>
-  <br />
-  <button onclick="logout()">Çıkış Yap</button>
-</div>
+
+  <div id="mainContent">
+    <div id="userDisplay"></div>
+    <div class="grid-container">
+      <div class="grid-item">Kutu 1</div>
+      <div class="grid-item">Kutu 2</div>
+      <div class="grid-item">Kutu 3</div>
+      <div class="grid-item">Kutu 4</div>
+      <div class="grid-item">Kutu 5</div>
+      <div class="grid-item">Kutu 6</div>
+      <div class="grid-item">Kutu 7</div>
+      <div class="grid-item">Kutu 8</div>
+      <div class="grid-item">Kutu 9</div>
+    </div>
+    <br />
+    <button onclick="logout()">Çıkış Yap</button>
+  </div>
+</main>
 
 <script>
   const loginDiv = document.getElementById('login');
