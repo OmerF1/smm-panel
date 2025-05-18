@@ -7,57 +7,162 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #121212; /* Koyu arka plan */
+      background: #121212;
       color: white;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
+      height: 100vh;
     }
 
-    header {
+    .hidden { display: none; }
+
+    #auth, #main {
+      width: 100%;
+      max-width: 400px;
       padding: 20px;
-      font-size: 2em;
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3a3aff;
+      border: none;
+      color: white;
       font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    #main-content {
+      padding: 40px;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
-      max-width: 900px;
-      width: 100%;
-      padding: 40px;
     }
 
     .box {
-      background-color: #1e1e1e;
+      background-color: #2e2e2e;
       border: 2px solid #333;
-      height: 150px;
+      height: 100px;
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 8px;
-      transition: transform 0.2s;
     }
 
-    .box:hover {
-      transform: scale(1.05);
-      background-color: #2e2e2e;
+    header {
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .logout {
+      margin-top: 20px;
+      background-color: crimson;
     }
   </style>
 </head>
 <body>
+
+<div id="auth">
+  <h2>Giriş Yap / Kayıt Ol</h2>
+  <input type="text" id="username" placeholder="Kullanıcı Adı">
+  <input type="password" id="password" placeholder="Şifre">
+  <button onclick="login()">Giriş Yap</button>
+  <button onclick="register()">Kayıt Ol</button>
+</div>
+
+<div id="main" class="hidden">
   <header>OmerF1</header>
-  <div class="grid">
-    <div class="box">1</div>
-    <div class="box">2</div>
-    <div class="box">3</div>
-    <div class="box">4</div>
-    <div class="box">5</div>
-    <div class="box">6</div>
-    <div class="box">7</div>
-    <div class="box">8</div>
-    <div class="box">9</div>
+  <div id="main-content">
+    <div class="grid">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+      <div class="box">6</div>
+      <div class="box">7</div>
+      <div class="box">8</div>
+      <div class="box">9</div>
+    </div>
+    <button class="logout" onclick="logout()">Çıkış Yap</button>
   </div>
+</div>
+
+<script>
+  const users = JSON.parse(localStorage.getItem("users") || "{}");
+
+  function showMain() {
+    document.getElementById("auth").classList.add("hidden");
+    document.getElementById("main").classList.remove("hidden");
+  }
+
+  function showLogin() {
+    document.getElementById("auth").classList.remove("hidden");
+    document.getElementById("main").classList.add("hidden");
+  }
+
+  function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    if (users[user] && users[user] === pass) {
+      localStorage.setItem("currentUser", user);
+      showMain();
+    } else {
+      alert("Hatalı kullanıcı adı veya şifre!");
+    }
+  }
+
+  function register() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    if (user && pass) {
+      if (users[user]) {
+        alert("Bu kullanıcı zaten var.");
+      } else {
+        users[user] = pass;
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("Kayıt başarılı. Şimdi giriş yapabilirsin.");
+      }
+    } else {
+      alert("Lütfen kullanıcı adı ve şifre gir.");
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem("currentUser");
+    showLogin();
+  }
+
+  // Sayfa yüklendiğinde kullanıcı oturumda mı kontrol et
+  window.onload = () => {
+    const currentUser = localStorage.getItem("currentUser");
+    if (currentUser && users[currentUser]) {
+      showMain();
+    }
+  };
+</script>
+
 </body>
 </html>
