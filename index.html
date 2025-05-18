@@ -1,88 +1,122 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Demo Sorgu Paneli</title>
+  <meta charset="UTF-8" />
+  <title>Sorgu Paneli</title>
   <style>
     body {
-      background: #f4f4f4;
+      background-color: #0b1446; /* Has lacivert */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
+      color: #fff;
+      flex-direction: column;
+      padding: 20px;
     }
-
     .panel {
-      background: #fff;
+      background: #1e275f;
       padding: 40px;
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
       width: 100%;
-      max-width: 400px;
+      max-width: 450px;
       text-align: center;
     }
-
     .panel h2 {
-      margin-bottom: 20px;
-      color: #333;
+      margin-bottom: 25px;
+      font-size: 2.2rem;
+      color: #e0e0e0;
     }
-
-    input[type="text"] {
-      padding: 12px;
+    input[type="text"], input[type="email"], input[type="tel"] {
+      padding: 14px;
       width: 100%;
       margin-bottom: 20px;
-      border: 1px solid #ccc;
+      border: none;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 1.1rem;
     }
-
     button {
-      padding: 12px 25px;
+      padding: 14px 30px;
       background-color: #007bff;
       color: #fff;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 1.2rem;
       transition: background-color 0.3s;
+      font-weight: 600;
     }
-
     button:hover {
       background-color: #0056b3;
     }
-
     #sonuc {
-      margin-top: 20px;
-      font-weight: bold;
-      color: #222;
+      margin-top: 25px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      min-height: 2.2rem;
+      color: #c7d1ff;
+    }
+    footer {
+      margin-top: 40px;
+      color: #c7d1ff;
+      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    footer a {
+      color: #a3b0ff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: #e0e0ff;
     }
   </style>
 </head>
 <body>
   <div class="panel">
-    <h2>Ad Soyad ile TC Sorgu (DEMO)</h2>
-    <input type="text" id="adsoyad" placeholder="Örn: Ahmet Yıldız">
+    <h2>Sorgu Paneli</h2>
+
+    <input type="text" id="adsoyad" placeholder="Ad Soyad girin" />
+    <input type="tel" id="telefon" placeholder="Telefon numarası girin" />
+    <input type="email" id="email" placeholder="E-posta girin" />
+
     <button onclick="sorgula()">Sorgula</button>
     <div id="sonuc"></div>
   </div>
 
+  <footer>
+    <a href="https://instagram.com/yourinstagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </footer>
+
   <script>
     const veritabani = {
-      "ahmet yıldız": "12345678901",
-      "ayşe kaya": "98765432100",
-      "mehmet demir": "11122233344"
+      "ahmet yıldız": { tc: "12345678901", tel: "5551112233", email: "ahmet@example.com" },
+      "ayşe kaya": { tc: "98765432100", tel: "5552223344", email: "ayse@example.com" },
+      "mehmet demir": { tc: "11122233344", tel: "5553334455", email: "mehmet@example.com" }
     };
 
     function sorgula() {
       const adsoyad = document.getElementById("adsoyad").value.toLowerCase().trim();
+      const telefon = document.getElementById("telefon").value.trim();
+      const email = document.getElementById("email").value.trim();
       const sonucDiv = document.getElementById("sonuc");
 
       if (veritabani[adsoyad]) {
-        sonucDiv.innerText = `TC Kimlik No: ${veritabani[adsoyad]}`;
+        const kayit = veritabani[adsoyad];
+        sonucDiv.innerHTML = `
+          TC Kimlik No: <strong>${kayit.tc}</strong><br/>
+          Telefon: <strong>${kayit.tel}</strong><br/>
+          E-posta: <strong>${kayit.email}</strong>
+        `;
       } else {
-        sonucDiv.innerText = "Kayıt bulunamadı.";
+        sonucDiv.textContent = "Kayıt bulunamadı.";
       }
     }
   </script>
