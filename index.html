@@ -1,85 +1,75 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Masterpanel Giriş</title>
-<style>
-  body {
-    margin: 0; padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: #001f4d;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  .container {
-    background: #003366;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.6);
-    width: 350px;
-    padding: 30px;
-    box-sizing: border-box;
-  }
-  h2 {
-    margin-top: 0;
-    text-align: center;
-    color: #00ff00; /* yeşil ton */
-  }
-  input[type="text"] {
-    width: 100%;
-    padding: 12px 15px;
-    margin: 15px 0;
-    border-radius: 6px;
-    border: none;
-    font-size: 1em;
-  }
-  button {
-    width: 100%;
-    background-color: #00b300; /* koyu yeşil */
-    border: none;
-    color: white;
-    padding: 12px;
-    font-size: 1em;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  button:hover {
-    background-color: #009900;
-  }
-  .welcome {
-    text-align: center;
-    font-size: 1.2em;
-    margin-top: 20px;
-    color: #aaffaa;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OmerF1 Panel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0c1445;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('Çıkış.png');
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: contain;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 600px;
+    }
+
+    .title {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .login-box {
+      background-color: #b2ff80;
+      padding: 30px;
+      border-radius: 10px;
+      margin: 20px auto;
+    }
+
+    .login-box input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .login-box button {
+      padding: 10px 20px;
+      background-color: #0c1445;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-
-<div class="container" id="loginPanel">
-  <h2>Giriş Yap</h2>
-  <input type="text" id="usernameInput" placeholder="Kullanıcı Adı" />
-  <button onclick="login()">Giriş</button>
-  <div id="welcomeMessage" class="welcome" style="display:none;"></div>
-</div>
-
-<script>
-  function login() {
-    const username = document.getElementById('usernameInput').value.trim();
-    if (username.length < 3) {
-      alert('En az 3 karakterli kullanıcı adı gir!');
-      return;
-    }
-    document.getElementById('welcomeMessage').textContent = `Hoşgeldin, ${username}!`;
-    document.getElementById('welcomeMessage').style.display = 'block';
-    document.getElementById('usernameInput').style.display = 'none';
-    document.querySelector('button').style.display = 'none';
-  }
-</script>
-
+  <div class="container">
+    <div class="title">OmerF1</div>
+    <div class="login-box">
+      <input type="text" placeholder="Kullanıcı Adı"><br>
+      <input type="password" placeholder="Şifre"><br>
+      <button>Giriş Yap</button>
+    </div>
+    <div class="subtitle">Türkiye'nin aktif olarak<br>en kaliteli paneli</div>
+  </div>
 </body>
 </html>
