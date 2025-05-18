@@ -1,93 +1,99 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Masterpanel Giriş</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #001f4d; /* Lacivert arka plan */
-    color: #fff;
-    margin: 0; padding: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  header {
-    background: #003366;
-    color: white;
-    padding: 15px 20px;
-    font-size: 1.5em;
-    font-weight: bold;
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-
-    /* Ortala */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 70px; /* header yüksekliği kadar boşluk */
-    flex-direction: column;
-  }
-
-  #login, #mainContent {
-    width: 320px;
-  }
-  #login {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-  }
-  input {
-    padding: 10px;
-    font-size: 1em;
-    border-radius: 5px;
-    border: none;
-  }
-  button {
-    padding: 10px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    background: #28a745;
-    color: white;
-    cursor: pointer;
-  }
-  button:hover {
-    background: #218838;
-  }
-
-  #mainContent {
-    display: none;
-    text-align: center;
-  }
-  #userDisplay {
-    margin-bottom: 15px;
-    font-size: 1.2em;
-  }
-
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 15px;
-  }
-  .grid-item {
-    background: #003366;
-    border-radius: 8px;
-    padding: 30px 0;
-    font-size: 1.1em;
-    user-select: none;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Masterpanel Giriş</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #001f4d;
+      color: #fff;
+      margin: 0; padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #003366;
+      color: white;
+      padding: 15px 20px;
+      font-size: 1.5em;
+      font-weight: bold;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 70px;
+      flex-direction: column;
+    }
+    #login, #mainContent {
+      width: 320px;
+    }
+    #login {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+    #mainContent {
+      display: none;
+      text-align: center;
+    }
+    #userDisplay {
+      margin-bottom: 15px;
+      font-size: 1.2em;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 15px;
+    }
+    .grid-item {
+      background: #003366;
+      border-radius: 8px;
+      padding: 20px;
+      font-size: 1em;
+      user-select: none;
+      text-align: left;
+    }
+    .grid-item h3 {
+      margin-top: 0;
+      color: #00c3ff;
+    }
+    .grid-item ul, .grid-item pre, .grid-item p {
+      margin: 0;
+      font-size: 0.9em;
+    }
+    .grid-item input[type="file"],
+    .grid-item input[type="text"],
+    .grid-item button {
+      margin-top: 10px;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
 
@@ -103,15 +109,49 @@
   <div id="mainContent">
     <div id="userDisplay"></div>
     <div class="grid-container">
-      <div class="grid-item">Kutu 1</div>
-      <div class="grid-item">Kutu 2</div>
-      <div class="grid-item">Kutu 3</div>
-      <div class="grid-item">Kutu 4</div>
-      <div class="grid-item">Kutu 5</div>
-      <div class="grid-item">Kutu 6</div>
-      <div class="grid-item">Kutu 7</div>
-      <div class="grid-item">Kutu 8</div>
-      <div class="grid-item">Kutu 9</div>
+      <div class="grid-item">
+        <h3>Kullanıcılar</h3>
+        <ul>
+          <li>Ömer Faruk</li>
+          <li>Elif Yıldız</li>
+        </ul>
+      </div>
+      <div class="grid-item">
+        <h3>Yeni Kayıt</h3>
+        <input type="text" placeholder="İsim">
+        <button>Kayıt Et</button>
+      </div>
+      <div class="grid-item">
+        <h3>Bildirimler</h3>
+        <p>3 yeni mesaj var</p>
+      </div>
+      <div class="grid-item">
+        <h3>Log Kayıtları</h3>
+        <pre>[12:00] Giriş Yapıldı</pre>
+      </div>
+      <div class="grid-item">
+        <h3>Sistem Durumu</h3>
+        <p style="color:lightgreen;">Her şey yolunda ✅</p>
+      </div>
+      <div class="grid-item">
+        <h3>İstatistik</h3>
+        <ul>
+          <li>Toplam Kullanıcı: 123</li>
+          <li>Aktif Bugün: 34</li>
+        </ul>
+      </div>
+      <div class="grid-item">
+        <h3>Dosya Yükle</h3>
+        <input type="file">
+      </div>
+      <div class="grid-item">
+        <h3>Ayarlar</h3>
+        <button>Dark Mode</button>
+      </div>
+      <div class="grid-item">
+        <h3>Çıkış</h3>
+        <button style="background-color: #dc3545;">Güvenli Çıkış</button>
+      </div>
     </div>
     <br />
     <button onclick="logout()">Çıkış Yap</button>
@@ -123,7 +163,6 @@
   const mainContentDiv = document.getElementById('mainContent');
   const userDisplay = document.getElementById('userDisplay');
 
-  // Sayfa yüklendiğinde kullanıcı kontrolü
   const savedUser = localStorage.getItem('username');
   if (savedUser) {
     showMainContent(savedUser);
@@ -156,50 +195,3 @@
 
 </body>
 </html>
-<body>
-  <!-- Var olan içerik burada -->
-
-  <!-- Yeni panel kutusu kodu buraya ekleniyor -->
-  <div class="panel-kutusu">
-    <div class="panel-baslik">Panel İşlemleri</div>
-    <div class="panel-icerik">
-      <ol>
-        <li>Ad Soyad</li>
-        <li>Aile</li>
-        <li>Sülale</li>
-        <li>TC &gt; GSM</li>
-        <li>GSM &gt; TC</li>
-      </ol>
-    </div>
-  </div>
-
-  <style>
-    .panel-kutusu {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      width: 250px;
-      background-color: #f0f0f0;
-      border: 2px solid #333;
-      border-radius: 8px;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-      font-family: Arial, sans-serif;
-      z-index: 9999;
-    }
-
-    .panel-baslik {
-      background-color: #333;
-      color: white;
-      font-weight: bold;
-      padding: 10px;
-      border-top-left-radius: 6px;
-      border-top-right-radius: 6px;
-      text-align: center;
-    }
-
-    .panel-icerik {
-      padding: 10px 15px;
-      line-height: 1.6;
-    }
-  </style>
-</body>
