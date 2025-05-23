@@ -1,106 +1,42 @@
-/* Genel Ayarlar */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
-
-body {
-  background-color: #f5f7fa;
-  color: #333;
-  line-height: 1.6;
-}
-
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Header */
-.header {
-  background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
-  color: white;
-  padding: 30px 0;
-  text-align: center;
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav-links li a:hover {
-  color: #f39c12;
-}
-
-.hero-content h1 {
-  font-size: 2.8rem;
-  margin-bottom: 15px;
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 25px;
-}
-
-.btn-primary {
-  background-color: #f39c12;
-  color: white;
-  padding: 15px 35px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover {
-  background-color: #d17e07;
-}
-
-/* Footer */
-.footer {
-  background-color: #222;
-  color: #aaa;
-  padding: 20px 0;
-  text-align: center;
-  font-size: 0.9rem;
-  margin-top: 50px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .nav {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-
-  .btn-primary {
-    padding: 12px 25px;
-  }
-}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>OmerF1 - IG Sayfam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #001f3f; /* lacivert */
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #ff4136;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff6347;
+    }
+  </style>
+</head>
+<body>
+  <h1>Instagram Sayfama Git</h1>
+  <button onclick="window.location.href='https://instagram.com/adrixim21'">
+    Git ➜ @adrixim21
+  </button>
+</body>
+</html>
