@@ -12,19 +12,61 @@
       background: #000;
       color: #fff;
       font-family: 'Arial', sans-serif;
-      text-align: center;
     }
+
     header {
-      padding: 40px 20px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
       background: #111;
-      font-size: 32px;
+    }
+
+    .logo {
+      font-size: 28px;
       font-weight: bold;
       color: #0ff;
     }
-    .subtitle {
-      color: #ccc;
-      font-size: 16px;
+
+    .menu-toggle {
+      font-size: 28px;
+      cursor: pointer;
+      color: #0ff;
+      background: none;
+      border: none;
     }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 250px;
+      height: 100%;
+      background: #111;
+      padding: 60px 20px;
+      transition: left 0.3s;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #fff;
+      padding: 12px 0;
+      text-decoration: none;
+      font-size: 18px;
+      border-bottom: 1px solid #333;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: #ccc;
+    }
+
     .button-container {
       margin-top: 60px;
       display: flex;
@@ -32,6 +74,7 @@
       align-items: center;
       gap: 20px;
     }
+
     .panel-button {
       background-color: #0ff;
       color: #000;
@@ -45,15 +88,19 @@
       cursor: pointer;
       transition: background 0.3s;
     }
+
     .panel-button:hover {
       background-color: #00dddd;
     }
+
     footer {
       margin-top: 80px;
       font-size: 14px;
       color: #777;
+      text-align: center;
       padding-bottom: 40px;
     }
+
     footer a {
       color: #0ff;
       text-decoration: none;
@@ -62,7 +109,18 @@
 </head>
 <body>
 
-  <header>Adrix</header>
+  <header>
+    <div class="logo">Adrix</div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </header>
+
+  <div class="sidebar" id="sidebar">
+    <a href="#">Ana Sayfa</a>
+    <a href="#">Panel İşlemleri</a>
+    <a href="#">Sosyal Medya Yardımı</a>
+    <a href="#">İletişim</a>
+  </div>
+
   <div class="subtitle">Sosyal Medya Güvenlik Yardımı</div>
 
   <div class="button-container">
@@ -74,6 +132,13 @@
     İletişim: <a href="https://instagram.com/adrixim21" target="_blank">@adrixim21</a><br>
     Bu site yalnızca tanıtım amaçlıdır.
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+  </script>
 
 </body>
 </html>
