@@ -20,21 +20,25 @@
     }
     .info-text {
       font-size: 18px;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       max-width: 400px;
       line-height: 1.4;
     }
     a.username {
-      font-size: 36px;
-      font-weight: 700;
-      color: #00aaff;
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: #007acc;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 6px;
       text-decoration: none;
-      cursor: pointer;
-      transition: color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     a.username:hover {
-      color: #0088cc;
-      text-decoration: underline;
+      background-color: #005f99;
+      transform: scale(1.05);
     }
   </style>
 </head>
