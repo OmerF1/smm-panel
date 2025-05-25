@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Adrix Panel</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Adrix Panel - Sosyal Medya Güvenlik Yardımı ve Panel İşlemleri">
-  <meta name="author" content="Adrix">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Adrix Panel - Sosyal Medya Güvenlik Yardımı ve Panel İşlemleri" />
+  <meta name="author" content="Adrix" />
   <style>
     body {
       margin: 0;
@@ -46,6 +46,7 @@
       padding: 60px 20px;
       transition: left 0.3s;
       box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+      z-index: 10000;
     }
 
     .sidebar.open {
@@ -59,12 +60,18 @@
       text-decoration: none;
       font-size: 18px;
       border-bottom: 1px solid #333;
+      cursor: pointer;
+    }
+
+    .sidebar a:hover {
+      background: #0ff3;
     }
 
     .subtitle {
       text-align: center;
       font-size: 16px;
       color: #ccc;
+      margin-top: 20px;
     }
 
     .button-container {
@@ -105,6 +112,60 @@
       color: #0ff;
       text-decoration: none;
     }
+
+    /* Popup Stil */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #111;
+      padding: 20px;
+      box-shadow: 0 0 20px #0ff;
+      border-radius: 10px;
+      width: 320px;
+      z-index: 11000;
+      color: #0ff;
+    }
+
+    .popup h2 {
+      margin-top: 0;
+      color: #0ff;
+      text-align: center;
+    }
+
+    .popup form input, .popup form textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+    }
+
+    .popup form input:focus, .popup form textarea:focus {
+      box-shadow: 0 0 8px #0ff;
+      background: #222;
+      color: #0ff;
+    }
+
+    .popup button {
+      background: #0ff;
+      border: none;
+      padding: 10px 20px;
+      margin: 8px 5px 0 0;
+      font-weight: bold;
+      color: #000;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .popup button:hover {
+      background: #00dddd;
+    }
+
   </style>
 </head>
 <body>
@@ -115,17 +176,17 @@
   </header>
 
   <div class="sidebar" id="sidebar">
-    <a href="#">Ana Sayfa</a>
-    <a href="#">Panel İşlemleri</a>
-    <a href="#">Sosyal Medya Yardımı</a>
-    <a href="#">İletişim</a>
+    <a onclick="goHome(); toggleMenu()">Ana Sayfa</a>
+    <a onclick="openPanelFeatures(); toggleMenu()">Panel İşlemleri</a>
+    <a onclick="openSocialHelp(); toggleMenu()">Sosyal Medya Yardımı</a>
+    <a onclick="openContact(); toggleMenu()">İletişim</a>
   </div>
 
   <div class="subtitle">Sosyal Medya Güvenlik Yardımı</div>
 
   <div class="button-container">
-    <button class="panel-button">Panel İşlemleri</button>
-    <button class="panel-button">Sosyal Medya Güvenlik Yardımı</button>
+    <button class="panel-button" onclick="openPanelFeatures()">Panel İşlemleri</button>
+    <button class="panel-button" onclick="openSocialHelp()">Sosyal Medya Güvenlik Yardımı</button>
   </div>
 
   <footer>
@@ -133,10 +194,71 @@
     Bu site yalnızca tanıtım amaçlıdır.
   </footer>
 
+  <!-- Popuplar -->
+
+  <div id="panelFeaturesPopup" class="popup">
+    <h2>Panel Özellikleri</h2>
+    <ul>
+      <li>🔥 Hızlı ve Güvenilir</li>
+      <li>🔒 Güçlü Güvenlik</li>
+      <li>📊 Detaylı Raporlama</li>
+      <li>⚙️ Kolay Yönetim</li>
+    </ul>
+    <button onclick="closePopup('panelFeaturesPopup')">Kapat</button>
+  </div>
+
+  <div id="socialHelpPopup" class="popup">
+    <h2>Sosyal Medya Yardımı</h2>
+    <p>Hesap güvenliğiniz için ipuçları ve destek burada olacak.</p>
+    <button onclick="closePopup('socialHelpPopup')">Kapat</button>
+  </div>
+
+  <div id="contactPopup" class="popup">
+    <h2>İletişim</h2>
+    <p>Instagram üzerinden ulaşabilirsiniz:</p>
+    <a href="https://instagram.com/adrixim21" target="_blank" style="color:#0ff; text-decoration:underline;">@adrixim21</a>
+    <br><br>
+    <button onclick="closePopup('contactPopup')">Kapat</button>
+  </div>
+
+  <!-- Script -->
+
   <script>
     function toggleMenu() {
       const sidebar = document.getElementById('sidebar');
       sidebar.classList.toggle('open');
+      if (!sidebar.classList.contains('open')) {
+        closeAllPopups();
+      }
+    }
+
+    function closeAllPopups() {
+      document.querySelectorAll('.popup').forEach(p => p.style.display = 'none');
+    }
+
+    function openPanelFeatures() {
+      closeAllPopups();
+      document.getElementById('panelFeaturesPopup').style.display = 'block';
+    }
+
+    function openSocialHelp() {
+      closeAllPopups();
+      document.getElementById('socialHelpPopup').style.display = 'block';
+    }
+
+    function openContact() {
+      closeAllPopups();
+      document.getElementById('contactPopup').style.display = 'block';
+    }
+
+    function goHome() {
+      closeAllPopups();
+      // Sayfa yenile veya yönlendir istersen burada yapabilirsin
+      // window.location.href = "/";
+    }
+
+    function closePopup(id) {
+      document.getElementById(id).style.display = 'none';
     }
   </script>
 
